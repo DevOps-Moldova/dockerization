@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS builder
+WORKDIR /src
+
+# Copy everything
+COPY ./src/ ./
+# Restore as distinct layers
+RUN dotnet restore
+# Build and publish a release
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+
+ENV DOTNET_EnableDiagnostics=0
+WORKDIR /srv
+
+COPY --from=builder /src/out .
+
+ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
