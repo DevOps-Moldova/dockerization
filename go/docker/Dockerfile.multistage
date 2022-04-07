@@ -1,0 +1,15 @@
+FROM golang:latest as builder
+
+WORKDIR /src
+
+COPY ./src/main.go /src/
+
+RUN CGO_ENABLED=0 GOOS=linux  go build -a -installsuffix cgo -o /dist/app ./main.go
+
+FROM alpine:3
+
+WORKDIR /srv
+
+COPY --from=builder /dist/app /srv/
+
+CMD [ "/srv/app" ]
