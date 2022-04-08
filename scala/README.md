@@ -1,4 +1,4 @@
-# .NET
+# Scala
 
 Hello World scala application
 
@@ -13,17 +13,17 @@ sbt run
 ## Docker simple
 
 ```bash
- docker build -t scala -f docker/Dockerfile .
+ docker build -t scala-app -f docker/Dockerfile .
 ```
 
 ## Docker multistage
 
 ```bash
-docker build -t scala:multi -f docker/Dockerfile.multistage .
+docker build -t scala-app -f docker/Dockerfile.multistage .
 ```
 
 ## Docker run
 
 ```bash
-docker run -it scala:multi
+docker run -it scala-app:multi
 ```

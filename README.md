@@ -17,3 +17,11 @@ Description in go/README.md
 ## Python Django web application with entrypoint
 
 Description in python/README.md
+
+## PHP application with database
+
+Description in php/README.md
+
+## Java API application with database connection
+
+Description in java/README.md
