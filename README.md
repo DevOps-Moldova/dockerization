@@ -10,7 +10,10 @@ Description in scala/README.md
 
 Description in net/README.md
 
-## GoLang HTTP application
+## GoLang HTTP application with exposed port
 
 Description in go/README.md
 
+## Python Django web application with entrypoint
+
+Description in python/README.md
