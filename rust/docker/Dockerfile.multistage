@@ -1,0 +1,13 @@
+FROM rust:alpine as builder
+WORKDIR /src/
+RUN apk add pkgconfig openssl-dev libc-dev
+COPY ./src/ .
+RUN  cargo build --release
+RUN ls -lah /src/target/release/build
+
+FROM alpine:3
+WORKDIR /srv
+EXPOSE 8000
+RUN apk add openssl ca-certificates --no-cache
+COPY --from=builder /src/target/release/push-rust /srv/
+CMD ["./push-rust"]
